@@ -49,16 +49,17 @@ def convert_raw_temperature_to_celsius(thermometer_file_path: Path) -> float | N
     return temperature_in_celsius
 
 
-def print_temperature_measurement(thermometer_file_path: Path) -> None:
+def print_temperature_measurement(thermometer_file_path: Path) -> bool:
     temperature_in_celsius = convert_raw_temperature_to_celsius(
         thermometer_file_path
     )
 
     if temperature_in_celsius is None:
-        print("Błąd odczytu danych! Czujnik odłączony lub uszkodzony.")
-        return
+        print("--")
+        return False
 
     print(f"Temperatura: {temperature_in_celsius:.2f} °C")
+    return True
 
 
 def main() -> None:
@@ -72,9 +73,23 @@ def main() -> None:
     print(f"Wykryto czujnik pod adresem ID: {thermometer_id}")
     print("Rozpoczęto ciągły pomiar temperatury...\n")
 
+    consecutive_errors = 0
+    max_consecutive_errors = 10
+
     try:
         while True:
-            print_temperature_measurement(thermometer_file_path)
+            is_success = print_temperature_measurement(thermometer_file_path)
+
+            if is_success:
+                consecutive_errors = 0  # Sukces resetuje licznik
+            else:
+                consecutive_errors += 1
+                if consecutive_errors >= max_consecutive_errors:
+                    print(
+                        f"\nPrzekroczono limit {max_consecutive_errors} kolejnych błędów. Zakończenie pracy skryptu."
+                    )
+                    break
+
             time.sleep(2)
 
     except KeyboardInterrupt:
