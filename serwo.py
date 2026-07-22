@@ -114,4 +114,4 @@ if __name__ == "__main__":
             # controller.home_channel(channel=0, target_us=1500)
 
     except Exception as err:
-        print(f"[-] Błąd wykonania skryptu: {err}")
+        print(f"[-] Błąd wykonaniaaa skryptu: {err}")
