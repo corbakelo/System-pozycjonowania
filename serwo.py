@@ -103,15 +103,15 @@ if __name__ == "__main__":
         with MaestroController(port_path=device_port) as controller:
             controller.home_channel(channel=0, target_us=1500)
 
-            # print("Ruch na 1200 µs...")
-            # controller.set_target(channel=0, target_us=1200)
-            # time.sleep(2.0)
+            print("Ruch na 1200 µs...")
+            controller.set_target(channel=0, target_us=1200)
+            time.sleep(2.0)
 
             # print("Ruch na 1800 µs...")
             # controller.set_target(channel=0, target_us=1800)
             # time.sleep(2.0)
 
-            # controller.home_channel(channel=0, target_us=1500)
+            controller.home_channel(channel=0, target_us=1500)
 
     except Exception as err:
-        print(f"[-] Błąd wykonaniaaa skryptu: {err}")
+        print(f"[-] Błąd wykonaniaaaa skryptu: {err}")
