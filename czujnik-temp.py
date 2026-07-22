@@ -24,7 +24,8 @@ def convert_raw_temperature_to_celsius(thermometer_file_path: Path) -> float | N
     if not lines or len(lines) < 2:
         return None
 
-    if lines[0].startswith("00 00 00 00 00 00 00 00 00"):
+    first_line = lines[0].strip()
+    if "00 00 00 00 00 00 00 00 00" in first_line:
         return None
     
     retry_count = 0
