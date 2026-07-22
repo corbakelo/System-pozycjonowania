@@ -81,7 +81,7 @@ def main() -> None:
             is_success = print_temperature_measurement(thermometer_file_path)
 
             if is_success:
-                consecutive_errors = 0  # Sukces resetuje licznik
+                consecutive_errors = 0 
             else:
                 consecutive_errors += 1
                 if consecutive_errors >= max_consecutive_errors:
