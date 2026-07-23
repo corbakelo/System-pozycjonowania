@@ -91,10 +91,8 @@ if __name__ == "__main__":
         with JrkController(port_path=device_port) as jrk:
             current_pos = jrk.get_position()
             print(f"[i] Pozycja startowa siłownika: {current_pos}")
-            target = 0
-            jrk.set_target(target)
 
-            target = 3800
+            target = 0
             print(f"[>] Rozpoczynam ruch do pozycji {target}...")
             jrk.set_target(target)
 
@@ -106,6 +104,10 @@ if __name__ == "__main__":
                 if abs(pos - target) < 20:  # Margines tolerancji
                     print("[+] Osiągnięto cel!")
                     break
+
+            target = 3800
+            print(f"[>] Rozpoczynam ruch powrotny do pozycji {target}...")
+            jrk.set_target(target)
 
             time.sleep(3.0)
             final_pos = jrk.get_position()
