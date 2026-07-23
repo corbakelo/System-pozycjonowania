@@ -92,7 +92,7 @@ if __name__ == "__main__":
             current_pos = jrk.get_position()
             print(f"[i] Pozycja startowa siłownika: {current_pos}")
 
-            target = 4095
+            target = 3800
             print(f"[>] Rozpoczynam ruch do pozycji {target}...")
             jrk.set_target(target)
 
