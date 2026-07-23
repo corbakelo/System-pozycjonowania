@@ -92,7 +92,7 @@ if __name__ == "__main__":
             current_pos = jrk.get_position()
             print(f"[i] Pozycja startowa siłownika: {current_pos}")
 
-            target = 0
+            target = 1000
             print(f"[>] Rozpoczynam ruch do pozycji {target}...")
             jrk.set_target(target)
 
@@ -104,8 +104,8 @@ if __name__ == "__main__":
                 if abs(pos - target) < 20:  # Margines tolerancji
                     print("[+] Osiągnięto cel!")
                     break
-
-            target = 3800
+            time.sleep(1.0)
+            target = 1001
             print(f"[>] Rozpoczynam ruch powrotny do pozycji {target}...")
             jrk.set_target(target)
 
