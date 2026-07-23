@@ -91,6 +91,8 @@ if __name__ == "__main__":
         with JrkController(port_path=device_port) as jrk:
             current_pos = jrk.get_position()
             print(f"[i] Pozycja startowa siłownika: {current_pos}")
+            target = 0
+            jrk.set_target(target)
 
             target = 3800
             print(f"[>] Rozpoczynam ruch do pozycji {target}...")
