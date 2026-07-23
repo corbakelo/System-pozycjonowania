@@ -105,7 +105,7 @@ if __name__ == "__main__":
                     print("[+] Osiągnięto cel!")
                     break
             time.sleep(1.0)
-            target = 1001
+            target = 1010
             print(f"[>] Rozpoczynam ruch powrotny do pozycji {target}...")
             jrk.set_target(target)
 
